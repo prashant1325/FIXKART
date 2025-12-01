@@ -219,7 +219,7 @@ export const INVENTORY_DATA: Category[] = [
       { name: "Dollies", imagePath: "/material-handling/dollies.webp" },
       { name: "Drum Handling", imagePath: "/material-handling/dum-handling.webp" },
       { name: "Forklifts", imagePath: "/material-handling/forklifts.webp" },
-      { name: "Hoists", imagePath: "/material-handling/hoists.webp" },
+      { name: "Hoists", imagePath: "/material-handling/Hoists.webp" },
       { name: "Jacks", imagePath: "/material-handling/jacks.webp" },
       { name: "Lift Tables", imagePath: "/material-handling/lift-tables.png" },
       { name: "Pallet Trucks", imagePath: "/material-handling/pallet-trucks.webp" },
