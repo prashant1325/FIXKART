@@ -4,8 +4,8 @@ import React, { Suspense } from 'react'; // 1. Added Suspense
 import { useSearchParams } from 'next/navigation';
 import Image from 'next/image';
 // 2. FIXED IMPORT: Changed './data' to '@/data' to find the folder correctly
-import { INVENTORY_DATA, SIDEBAR_LINKS } from '@/data/inventory'; 
-import { ProductItem } from '@/data/types';
+import { INVENTORY_DATA, SIDEBAR_LINKS } from './data/inventory'; 
+import { ProductItem } from './data/types';
 
 // --- CONFIGURATION ---
 const BRAND_BLUE = "#00529b";
