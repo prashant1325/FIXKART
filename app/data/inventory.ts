@@ -349,7 +349,7 @@ export const INVENTORY_DATA: Category[] = [
     title: "Raw Materials",
     slug: toSlug("Raw Materials"),
     items: [
-      { name: "Ceramics" },
+      { name: "Ceramics", imagePath: "/pulling-lifting/wire-rope.jpeg" },
       { name: "Fabrics" },
       { name: "Felt" },
       { name: "Fiberglass" },
