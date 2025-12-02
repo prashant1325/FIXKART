@@ -32,6 +32,41 @@ export const INVENTORY_DATA: Category[] = [
     ]
   },
   {
+  title: "Power Tools",
+  slug: toSlug("Power Tools"),
+  items: [
+    { name: "Cordless Tool Tracking Tags", imagePath: "/power-tools\\tracking-tags.png" },
+    { name: "Cordless Tool Jobsite Fans", imagePath: "/power-tools\\jobsite-fans.jpg" },
+    { name: "Cordless Tool Batteries & Power Accessories", imagePath: "/power-tools\\batteries-accessories.webp" },
+    { name: "Cordless Tool Combination Kits", imagePath: "/power-tools\\combination-kits.jpg" },
+    { name: "Cordless Tool Jobsite Radios & Speakers", imagePath: "/power-tools\\radios-speakers.jpg" },
+    { name: "Impact Wrenches, Power Torque Wrenches & Power Ratchets", imagePath: "/power-tools\\impact-wrenches.avif" },
+    { name: "Cordless Tool Lighting", imagePath: "/power-tools\\lighting.jpg" },
+    { name: "Drills & Drivers", imagePath: "/power-tools\\drills-drivers.webp" },
+    { name: "Grinders & Cut-Off Tools", imagePath: "/power-tools\\grinders.webp" },
+    { name: "Heat Guns, Heat Blowers & Hot Knives", imagePath: "/power-tools\\heat-guns.jpg" },
+    { name: "Mud Mixers & Concrete Vibrators", imagePath: "/power-tools\\mud-mixers.webp" },
+    { name: "Power Planers, Jointers & Joiners", imagePath: "/power-tools\\planers-jointers.avif" },
+    { name: "Electrician's Power Tools", imagePath: "/power-tools\\electrition-tools.jpg" },
+    { name: "Plumbing Power Tools", imagePath: "/power-tools\\plumbing-tools.webp" },
+    { name: "Power Punching Tools", imagePath: "/power-tools\\punching-tools.jpg" },
+    { name: "Sanding & Finishing Tools", imagePath: "/power-tools\\sanding-finishing.jpg" },
+    { name: "Engravers & Accessories", imagePath: "/power-tools\\engravers.jpg" },
+    { name: "Power Saws & Blades", imagePath: "/power-tools\\saws-blades.jpg" },
+    { name: "Power Shears & Nibblers", imagePath: "/power-tools\\shears-nibblers.jpg" },
+    { name: "Nail Guns, Staple Guns & Rivet Tools", imagePath: "/power-tools\\nail-guns.jpg" },
+    { name: "Rebar Tying Tools, Cutters & Benders", imagePath: "/power-tools\\rebar-tools.png" },
+    { name: "Rotary Hammers, Demolition Hammers & Breaker Hammers", imagePath: "/power-tools\\rotary-hammers.webp" },
+    { name: "Routers, Bits & Wood Shapers", imagePath: "/power-tools\\router.jpg" },
+    { name: "Silica Dust Extractors & Dust Abatement Sprayers", imagePath: "/power-tools\\dust-extractors.webp" },
+    { name: "Power Tool Replacement Parts", imagePath: "/power-tools\\replacement-parts.webp" },
+    { name: "Rotary Tools, Oscillating Tools & Cut-Out Tools", imagePath: "/power-tools\\rotary-oscillating.jpg" },
+    { name: "Woodturning Lathes", imagePath: "/power-tools\\lathes.webp" },
+    { name: "Wood Dust Collection & Air Filtration", imagePath: "/power-tools\\dust-collection.webp" }
+  ]
+},
+
+  {
     title: "Abrading & Polishing",
     slug: toSlug("Abrading & Polishing"),
     items: [
