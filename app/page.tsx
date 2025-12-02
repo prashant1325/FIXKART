@@ -1,9 +1,8 @@
 "use client";
 
-import React, { Suspense } from 'react'; // 1. Added Suspense
+import React, { Suspense } from 'react'; 
 import { useSearchParams } from 'next/navigation';
 import Image from 'next/image';
-// 2. FIXED IMPORT: Changed './data' to '@/data' to find the folder correctly
 import { INVENTORY_DATA, SIDEBAR_LINKS } from './data/inventory'; 
 import { ProductItem } from './data/types';
 
@@ -11,7 +10,6 @@ import { ProductItem } from './data/types';
 const BRAND_BLUE = "#00529b";
 
 // --- SUB-COMPONENT: HANDLES LOGIC ---
-// We move the search logic here so we can wrap it in Suspense
 function InventoryContent() {
   const searchParams = useSearchParams();
   const searchQuery = searchParams.get('q')?.toLowerCase() || "";
@@ -21,7 +19,8 @@ function InventoryContent() {
     e.preventDefault();
     const element = document.getElementById(id);
     if (element) {
-      const headerOffset = 80;
+      // Adjusted offset for mobile vs desktop (mobile header might need less/more offset)
+      const headerOffset = 80; 
       const elementPosition = element.getBoundingClientRect().top;
       const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
       window.scrollTo({ top: offsetPosition, behavior: "smooth" });
@@ -29,8 +28,32 @@ function InventoryContent() {
   };
 
   return (
-    <div className="w-full flex">
-      {/* --- LEFT SIDEBAR (Sticky) --- */}
+    <div className="w-full flex flex-col md:flex-row">
+      
+      {/* ========================================= */}
+      {/* 1. MOBILE CATEGORY NAV (Visible only on Mobile) */}
+      {/* ========================================= */}
+      <div className="md:hidden sticky top-[60px] z-40 bg-white border-b border-gray-200 shadow-sm w-full">
+        <div className="flex overflow-x-auto whitespace-nowrap p-3 gap-2 hide-scrollbar">
+          {SIDEBAR_LINKS.map((linkName, index) => {
+             const catSlug = INVENTORY_DATA.find(c => c.title === linkName)?.slug || "";
+             return (
+               <a
+                 key={index}
+                 href={`#${catSlug}`}
+                 onClick={(e) => handleScroll(e, catSlug)}
+                 className="px-4 py-1.5 bg-gray-100 text-gray-700 rounded-full text-xs font-medium border border-gray-200 active:bg-[#00529b] active:text-white transition-colors"
+               >
+                 {linkName}
+               </a>
+             );
+          })}
+        </div>
+      </div>
+
+      {/* ========================================= */}
+      {/* 2. DESKTOP SIDEBAR (Hidden on Mobile)     */}
+      {/* ========================================= */}
       <aside className="hidden md:block w-64 flex-shrink-0 py-4 pl-4 pr-6 border-r border-gray-200 sticky top-[70px] h-[calc(100vh-70px)] overflow-y-auto">
         <h2 className="text-sm font-bold text-gray-800 border-b-2 border-[#ffc20e] pb-1 mb-3">
           Choose a Category
@@ -54,7 +77,7 @@ function InventoryContent() {
       </aside>
 
       {/* --- MAIN CONTENT AREA --- */}
-      <main className="flex-1 p-6">
+      <main className="flex-1 p-4 md:p-6">
         
         {searchQuery && (
            <div className="mb-6 p-4 bg-yellow-50 border border-yellow-200 rounded text-sm text-gray-700">
@@ -73,14 +96,14 @@ function InventoryContent() {
           if (filteredItems.length === 0) return null;
 
           return (
-            <section key={category.slug} id={category.slug} className="mb-12 scroll-mt-24">
+            <section key={category.slug} id={category.slug} className="mb-12 scroll-mt-32 md:scroll-mt-24">
               <div className="border-b border-gray-300 pb-2 mb-6">
-                <h1 className="text-2xl font-semibold" style={{ color: BRAND_BLUE }}>
+                <h1 className="text-xl md:text-2xl font-semibold" style={{ color: BRAND_BLUE }}>
                   {category.title}
                 </h1>
               </div>
 
-              <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-x-4 gap-y-8">
+              <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-x-3 gap-y-6 md:gap-x-4 md:gap-y-8">
                 {filteredItems.map((item, idx) => (
                   <ProductCard key={idx} item={item} />
                 ))}
@@ -100,7 +123,6 @@ function InventoryContent() {
 }
 
 // --- MAIN PAGE COMPONENT ---
-// 3. CRITICAL FIX: Wrapped in Suspense to prevent Vercel Build Errors
 export default function HomePage() {
   return (
     <div className="min-h-screen bg-white font-sans text-gray-800">
