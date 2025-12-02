@@ -105,15 +105,14 @@ function InventoryContent() {
       {/* Shows the CURRENT category name while scrolling */}
       <button 
         onClick={() => setIsMobileMenuOpen(true)}
-        className="md:hidden fixed z-40 left-1/2 -translate-x-1/2 p-2 px-5 bg-[#00529b] text-white rounded-full shadow-lg hover:bg-blue-800 transition-all active:scale-95 flex items-center gap-2 border-2 border-white/20 backdrop-blur-sm"
-        style={{ top: '120px' }} // Positioned just below your search bar
+        className="md:hidden fixed z-40 right-4 p-2 px-4 bg-[#00529b] text-white rounded-full shadow-lg hover:bg-blue-800 transition-all active:scale-95 flex items-center gap-2 border-2 border-white/20 backdrop-blur-sm"
+        style={{ top: '120px' }} 
       >
-        <MenuIcon />
         <span className="text-xs font-bold whitespace-nowrap">
           {activeCategoryTitle} 
         </span>
+        <MenuIcon />
       </button>
-
       {/* ========================================= */}
       {/* 2. MOBILE DRAWER (Unchanged)              */}
       {/* ========================================= */}

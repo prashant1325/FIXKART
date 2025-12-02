@@ -25,6 +25,7 @@ function SearchInput() {
       <input 
         type="text" 
         placeholder="Search products..." 
+        suppressHydrationWarning={true}
         className="flex-grow bg-transparent border-none outline-none text-sm text-gray-800 placeholder-gray-500 min-w-0"
         onChange={(e) => handleSearch(e.target.value)}
         defaultValue={searchParams.get('q')?.toString()}
