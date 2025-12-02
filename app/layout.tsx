@@ -37,14 +37,14 @@ export default function RootLayout({
               
               {/* --- 1. Logo & Nav Links Group --- */}
               <div className="flex items-center gap-6">
-                <Link href="/" className="flex-shrink-0 bg-white rounded px-2 py-1">
-                  <img 
-                    src="/fixkart-logo.png" 
-                    alt="FixKart" 
-                    className="h-8 w-auto object-contain"
-                  />
-                </Link>
-
+                {/* NEW CODE (Transparent) */}
+              <Link href="/" className="flex-shrink-0">
+                 <img 
+                   src="/fixkart-logo2.png" 
+                   alt="FixKart" 
+                   className="h-8 w-auto object-contain"
+                   />
+                  </Link>
                 <nav className="hidden md:flex items-center gap-4 text-sm font-medium text-white/90">
                   <Link href="/" className="hover:text-white hover:underline transition-all">Home</Link>
                   <Link href="/about" className="hover:text-white hover:underline transition-all">About</Link>
