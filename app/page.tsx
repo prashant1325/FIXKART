@@ -3,16 +3,19 @@
 import React, { Suspense, useState, useEffect, useMemo, useCallback } from 'react'; 
 import { useSearchParams } from 'next/navigation';
 import Image from 'next/image';
+import Link from 'next/link';
 import { INVENTORY_DATA, SIDEBAR_LINKS } from './data/inventory'; 
 import { ProductItem } from './data/types';
 
 // --- CONFIGURATION ---
 const BRAND_BLUE = "#00529b";
-const HEADER_HEIGHT_OFFSET = 160; // Increased to account for sticky headers
-
-// Adjust this value to match your actual Header + Search Bar height
-// This controls where the Category Title sticks.
+const HEADER_HEIGHT_OFFSET = 160; 
 const STICKY_HEADER_TOP = "115px"; 
+
+// --- UTILS ---
+// Helper to create URL-friendly slugs (e.g., "Threaded Rods" -> "threaded-rods")
+const toSlug = (text: string) =>
+  text.toLowerCase().replace(/ /g, "-").replace(/[^\w-]+/g, "");
 
 // --- ICONS ---
 const MenuIcon = () => (
@@ -50,13 +53,6 @@ function InventoryContent() {
     }).filter(category => category.items.length > 0);
   }, [searchQuery]);
 
-  // Helper: Get the nice title of the active category (e.g., "fastening" -> "Fastening & Joining")
-  const activeCategoryTitle = useMemo(() => {
-    if (!activeCategorySlug) return "Categories"; // Default text
-    const cat = INVENTORY_DATA.find(c => c.slug === activeCategorySlug);
-    return cat ? cat.title : "Categories";
-  }, [activeCategorySlug]);
-
   // 3. EFFECT: Intersection Observer
   useEffect(() => {
     const sections = document.querySelectorAll('section');
@@ -68,8 +64,6 @@ function InventoryContent() {
           }
         });
       },
-      // rootMargin adjustments:
-      // -120px from top: Ignores the header area so activation happens when content is readable
       { rootMargin: '-120px 0px -60% 0px', threshold: 0 }
     );
     sections.forEach((section) => observer.observe(section));
@@ -99,25 +93,17 @@ function InventoryContent() {
   return (
     <div className="w-full flex flex-col md:flex-row relative min-h-screen">
       
-      {/* ========================================= */}
-      {/* 1. DYNAMIC MOBILE BUTTON (Sticky Name)    */}
-      {/* ========================================= */}
-      {/* Shows the CURRENT category name while scrolling */}
+      {/* MOBILE BUTTON */}
       <button 
         onClick={() => setIsMobileMenuOpen(true)}
         suppressHydrationWarning={true}
         className="md:hidden fixed z-40 right-4 p-2 px-4 bg-[#00529b] text-white rounded-full shadow-lg hover:bg-blue-800 transition-all active:scale-95 flex items-center gap-2 border-2 border-white/20 backdrop-blur-sm"
         style={{ top: '120px' }} 
       >
-        {/* <span className="text-xs font-bold whitespace-nowrap">
-          {activeCategoryTitle} 
-        </span> */}
         <MenuIcon />
       </button>
-      {/* ========================================= */}
-      {/* 2. MOBILE DRAWER (Unchanged)              */}
-      {/* ========================================= */}
-      {/* Backdrop */}
+
+      {/* MOBILE DRAWER */}
       <div 
         className={`md:hidden fixed inset-0 z-50 bg-black/50 backdrop-blur-sm transition-opacity duration-300 ${
           isMobileMenuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
@@ -125,7 +111,6 @@ function InventoryContent() {
         onClick={() => setIsMobileMenuOpen(false)}
       />
 
-      {/* Drawer */}
       <div 
         className={`md:hidden fixed top-0 left-0 bottom-0 w-[280px] bg-white z-50 shadow-2xl transform transition-transform duration-300 ease-in-out flex flex-col ${
           isMobileMenuOpen ? "translate-x-0" : "-translate-x-full"
@@ -168,9 +153,7 @@ function InventoryContent() {
         </div>
       </div>
 
-      {/* ========================================= */}
-      {/* 3. DESKTOP SIDEBAR (Unchanged)            */}
-      {/* ========================================= */}
+      {/* DESKTOP SIDEBAR */}
       <aside className="hidden md:block w-64 flex-shrink-0 py-6 pl-6 pr-4 border-r border-gray-200 sticky top-[70px] h-[calc(100vh-70px)] overflow-y-auto custom-scrollbar">
         <h2 className="text-xs uppercase tracking-wider font-bold text-gray-400 mb-4">
           Browse Categories
@@ -209,8 +192,8 @@ function InventoryContent() {
         
         {searchQuery && (
            <div className="mb-8 p-4 bg-white border border-yellow-200 rounded-lg shadow-sm text-sm text-gray-700 animate-fade-in flex items-center justify-between">
-              <span>Results for: <strong>"{searchQuery}"</strong></span>
-              <a href="/" className="text-blue-600 text-xs font-bold uppercase tracking-wide hover:underline">Clear</a>
+             <span>Results for: <strong>"{searchQuery}"</strong></span>
+             <a href="/" className="text-blue-600 text-xs font-bold uppercase tracking-wide hover:underline">Clear</a>
            </div>
         )}
 
@@ -220,8 +203,7 @@ function InventoryContent() {
                 id={category.slug} 
                 className="mb-10 scroll-mt-48 md:scroll-mt-24"
             >
-              {/* === THIS IS THE STICKY SECTION HEADER === */}
-              {/* It sticks to the top as you scroll through the section */}
+              {/* SECTION HEADER */}
               <div 
                 className="sticky z-20 bg-white/95 backdrop-blur-md border-b border-gray-200 py-3 mb-6 -mx-4 px-4 md:mx-0 md:px-0 md:static md:bg-transparent md:border-none"
                 style={{ top: STICKY_HEADER_TOP }} 
@@ -234,7 +216,11 @@ function InventoryContent() {
 
               <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-x-4 gap-y-8">
                 {category.items.map((item, idx) => (
-                  <ProductCard key={`${category.slug}-${idx}`} item={item} />
+                  <ProductCard 
+                    key={`${category.slug}-${idx}`} 
+                    item={item} 
+                    categorySlug={category.slug} 
+                  />
                 ))}
               </div>
             </section>
@@ -242,8 +228,8 @@ function InventoryContent() {
         
         {searchQuery && filteredData.length === 0 && (
            <div className="flex flex-col items-center justify-center py-20 text-gray-400">
-              <span className="text-4xl mb-4">🔍</span>
-              <h2 className="text-lg font-semibold text-gray-600">No products found</h2>
+             <span className="text-4xl mb-4">🔍</span>
+             <h2 className="text-lg font-semibold text-gray-600">No products found</h2>
            </div>
         )}
       </main>
@@ -251,7 +237,6 @@ function InventoryContent() {
   );
 }
 
-// ... (Rest of exports: HomePage, ProductCard remain the same)
 export default function HomePage() {
   return (
     <div className="min-h-screen bg-white font-sans text-gray-800">
@@ -263,27 +248,70 @@ export default function HomePage() {
   );
 }
 
-const ProductCard = React.memo(function ProductCard({ item }: { item: ProductItem }) {
+// --- UPDATED PRODUCT CARD ---
+const ProductCard = React.memo(function ProductCard({ item, categorySlug }: { item: ProductItem, categorySlug: string }) {
   const encodedName = encodeURIComponent(item.name);
+  
+  // 1. Determine Primary and Fallback URLs
+  // Clean up paths: change backslashes to forward slashes. 
+  // If it doesn't start with '/', add it (unless it's http/https).
+  let primaryPath = item.imagePath ? item.imagePath.replace(/\\/g, "/") : "";
+  if (primaryPath && !primaryPath.startsWith('/') && !primaryPath.startsWith('http')) {
+    primaryPath = '/' + primaryPath;
+  }
+
   const fallbackUrl = `https://placehold.co/400x400/f3f4f6/00529b.png?text=${encodedName}&font=roboto`;
-  const imageSource = item.imagePath ? item.imagePath : fallbackUrl;
+  
+  // 2. Local State for the Image Source
+  // We default to the primary path (from inventory data).
+  // If that fails (onError), we switch to fallbackUrl.
+  const [imgSrc, setImgSrc] = useState(primaryPath || fallbackUrl);
+
+  // If the item prop changes, reset the image source to try the new primary path
+  useEffect(() => {
+    setImgSrc(primaryPath || fallbackUrl);
+  }, [primaryPath, fallbackUrl]);
+
+  const itemSlug = toSlug(item.name);
+
+  // --- LOGIC: AVAILABILITY CHECK ---
+  const quantity = (item as any).quantity || 0; 
+  const isAvailable = quantity > 0;
+
+  const containerClasses = `flex flex-col items-center group w-full h-full bg-white rounded-lg p-2 transition-all hover:bg-white cursor-pointer`;
 
   return (
-    <div className="flex flex-col items-center group cursor-pointer w-full h-full bg-white rounded-lg p-2 transition-all hover:bg-white">
-      <div className="aspect-square w-full max-w-[120px] bg-white border border-gray-100 rounded-lg mb-3 flex items-center justify-center overflow-hidden relative shadow-sm group-hover:shadow-md group-hover:border-blue-100 transition-all duration-300">
+    <Link href={`/${categorySlug}/${itemSlug}`} className={containerClasses}>
+      <div className={`aspect-square w-full max-w-[120px] bg-white border border-gray-100 rounded-lg mb-3 flex items-center justify-center overflow-hidden relative shadow-sm transition-all duration-300 ${
+        isAvailable ? 'group-hover:shadow-md group-hover:border-blue-100' : ''
+      }`}>
         <Image 
-            src={imageSource}
+            src={imgSrc} // Use state variable here
             alt={item.name}
             fill
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-            className="object-contain p-2 group-hover:scale-105 transition-transform duration-300"
+            className={`object-contain p-2 transition-transform duration-300 ${
+              isAvailable ? 'group-hover:scale-105' : 'opacity-80 grayscale-[0.3]'
+            }`}
             unoptimized={true}
             loading="lazy"
+            onError={() => setImgSrc(fallbackUrl)} // Switch to placeholder on error
         />
+        
+        {/* COMING SOON BADGE (Only shows if quantity is 0) */}
+        {!isAvailable && (
+          <div className="absolute top-1 right-1 z-10">
+             <span className="bg-green-100 text-green-700 text-[9px] font-bold px-1.5 py-0.5 rounded border border-green-200 tracking-tight shadow-sm">
+                Coming Soon
+             </span>
+          </div>
+        )}
       </div>
-      <span className="text-[13px] text-center leading-snug text-gray-600 font-medium group-hover:text-[#00529b] px-1 line-clamp-2">
+      <span className={`text-[13px] text-center leading-snug font-medium px-1 line-clamp-2 ${
+        isAvailable ? 'text-gray-600 group-hover:text-[#00529b]' : 'text-gray-400 group-hover:text-gray-600'
+      }`}>
         {item.name}
       </span>
-    </div>
+    </Link>
   );
 });

@@ -9,3 +9,4 @@ export interface Category {
   slug: string; // url-safe ID (e.g., 'hand-tools')
   items: ProductItem[];
 }
+
