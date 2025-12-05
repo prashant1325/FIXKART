@@ -24,15 +24,15 @@ router.get("/:id", getProductById);
 router.post(
   "/",
   authenticate,
-  authorize(["vendor"]),
-  [
-    check("name", "Name is required").not().isEmpty(),
-    check("description", "Description is required").not().isEmpty(),
-    check("category", "Category is required").not().isEmpty(),
-    check("price", "Price is required").isNumeric(),
-    check("stock", "Stock is required").isNumeric(),
-    check("unit", "Unit is required").not().isEmpty(),
-  ],
+  // authorize(["vendor"]),
+  // [
+  //   check("name", "Name is required").not().isEmpty(),
+  //   check("description", "Description is required").not().isEmpty(),
+  //   check("category", "Category is required").not().isEmpty(),
+  //   check("price", "Price is required").isNumeric(),
+  //   check("stock", "Stock is required").isNumeric(),
+  //   check("unit", "Unit is required").not().isEmpty(),
+  // ],
   createProduct
 );
 

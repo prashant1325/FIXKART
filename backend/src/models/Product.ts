@@ -1,7 +1,7 @@
 import mongoose, { Schema, Document } from "mongoose";
 
 export interface IProduct extends Document {
-  vendor: mongoose.Types.ObjectId;
+  vendor: string;
   name: string;
   description: string;
   category: string;
@@ -27,7 +27,7 @@ export interface IProduct extends Document {
 
 const ProductSchema: Schema = new Schema(
   {
-    vendor: { type: Schema.Types.ObjectId, ref: "Vendor", required: true },
+    vendor: { type: String, required: true },
     name: { type: String, required: true },
     description: { type: String, required: true },
     category: { type: String, required: true },
@@ -39,12 +39,7 @@ const ProductSchema: Schema = new Schema(
     minOrderQuantity: { type: Number, default: 1 },
     unit: { type: String, required: true }, // e.g., "piece", "box", "kg"
     images: [{ type: String }],
-    specifications: [
-      {
-        key: { type: String },
-        value: { type: String },
-      },
-    ],
+    specifications: { type: String, required: true },
     status: {
       type: String,
       enum: ["pending", "active", "rejected"],
