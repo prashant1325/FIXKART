@@ -1,5 +1,6 @@
 // src/data/types.ts
 export interface ProductItem {
+  quantity: undefined;
   name: string;
   imagePath?: string; // Optional: specific path to image in /public
   categoryId?: string;
