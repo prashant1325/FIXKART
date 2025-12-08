@@ -4,9 +4,8 @@ import Image from "next/image";
 import Link from "next/link";
 import DeleteButton from "@/components/DeleteButton";
 
-// --- CRITICAL FIX: Forces Next.js to fetch fresh data on every visit ---
-// This prevents 404 errors when new categories are added.
-export const dynamic = "force-dynamic";
+// --- CRITICAL FIX: Keep this line to prevent Build Errors ---
+export const dynamic = "force-dynamic"; 
 
 export default async function BrowseSubCategoryPage({ 
   params 
@@ -15,7 +14,6 @@ export default async function BrowseSubCategoryPage({
 }) {
   const { slug } = await params;
 
-  // 1. Fetch Products from DB that match this Sub-Category
   const products = await prisma.product.findMany({
     where: {
       subCategory: {
@@ -26,7 +24,6 @@ export default async function BrowseSubCategoryPage({
     orderBy: { createdAt: 'desc' }
   });
 
-  // 2. Group Products by "Sub-Sub-Category"
   const groupedProducts: Record<string, typeof products> = {};
   
   products.forEach(product => {
@@ -37,11 +34,8 @@ export default async function BrowseSubCategoryPage({
 
   return (
     <div className="min-h-screen bg-gray-50 p-8">
-      {/* Header */}
       <div className="max-w-7xl mx-auto mb-8">
-        <Link href="/" className="text-sm text-gray-500 hover:text-[#00529b] transition-colors">
-          ← Back to Home
-        </Link>
+        <Link href="/" className="text-sm text-gray-500 hover:text-[#00529b]">← Back to Home</Link>
         <h1 className="text-3xl font-bold text-[#00529b] capitalize mt-2">
           {slug.replace(/-/g, ' ')} Inventory
         </h1>
@@ -50,7 +44,7 @@ export default async function BrowseSubCategoryPage({
       <div className="max-w-7xl mx-auto">
         {Object.keys(groupedProducts).length === 0 ? (
           <div className="text-center py-20 text-gray-400">
-            <p className="text-lg">No products found in this category yet.</p>
+            <p>No products found in this category yet.</p>
             <p className="text-sm mt-2">Use the "Post Item" button on the homepage to add one.</p>
           </div>
         ) : (
@@ -64,11 +58,7 @@ export default async function BrowseSubCategoryPage({
               <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-6">
                 {items.map((product) => (
                   <div key={product.id} className="bg-white rounded-xl shadow-sm border border-gray-100 p-3 hover:shadow-md transition-all relative group">
-                    
-                    {/* Delete Button (Top Right) */}
                     <DeleteButton productId={product.id} productName={product.name} />
-
-                    {/* Product Card Link */}
                     <Link href={`/product/${product.slug}`} className="block">
                       <div className="relative aspect-square mb-3 bg-gray-50 rounded-lg overflow-hidden">
                         <Image 
@@ -79,11 +69,9 @@ export default async function BrowseSubCategoryPage({
                           unoptimized
                         />
                       </div>
-                      
                       <h3 className="font-semibold text-gray-800 text-sm line-clamp-2 leading-tight min-h-[2.5em]">
                         {product.title || product.name}
                       </h3>
-                      
                       <div className="mt-2 flex items-center justify-between">
                         <span className="text-[#00529b] font-bold text-sm">₹{product.price}</span>
                         <span className="text-xs text-gray-500 bg-gray-100 px-1.5 py-0.5 rounded">
