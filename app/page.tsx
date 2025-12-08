@@ -1,21 +1,12 @@
 import React, { Suspense } from "react";
-import { prisma } from "@/lib/prisma"; // Make sure you have the prisma client helper
 import InventoryContent from "@/components/InventoryContent";
 
 // This is a Server Component. It runs on the backend.
 export default async function HomePage() {
   
-  // 1. Fetch any new products created via the Vendor Modal
-  // We wrap this in try/catch to ensure the site still loads even if DB is down
-  let dbProducts: any[] | undefined = [];
-  try {
-    dbProducts = await prisma.product.findMany({
-      orderBy: { id: 'desc' }
-    });
-  } catch (error) {
-    console.error("Database connection failed:", error);
-    // dbProducts remains [] so the site still works with static data
-  }
+  // Note: We removed the DB fetching here because the Homepage 
+  // now only shows static Category Folders.
+  // The actual DB products are loaded dynamically in the /browse/[slug] page.
 
   return (
     <div className="min-h-screen bg-white font-sans text-gray-800">
@@ -29,8 +20,8 @@ export default async function HomePage() {
           </div>
         }
       >
-        {/* 2. Pass the DB data to the Client Component */}
-        <InventoryContent dbProducts={dbProducts} />
+        {/* Update: No longer passing dbProducts, so no type error */}
+        <InventoryContent />
       </Suspense>
     </div>
   );
