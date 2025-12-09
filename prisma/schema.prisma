@@ -13,6 +13,9 @@ datasource db {
 model Product {
   id             String   @id @default(auto()) @map("_id") @db.ObjectId
   
+  // --- OWNER TRACKING (NEW) ---
+  vendorId       String   // Stores the Clerk User ID. Required for ownership checks.
+
   // --- IDENTIFICATION ---
   name           String   // Internal ID/Name (e.g. "anchor-wedge-m6")
   title          String   // Display Title (e.g. "M6 Wedge Anchor")
@@ -22,7 +25,7 @@ model Product {
   // --- HIERARCHY (3 Levels) ---
   category       String   // Level 1: e.g., "fastening"
   subCategory    String?  // Level 2: e.g., "anchors"
-  subSubCategory String?  // Level 3: e.g., "wedge-anchors" <--- NEW FIELD
+  subSubCategory String?  // Level 3: e.g., "wedge-anchors"
 
   // --- IMAGES ---
   image          String   // Main Display Image (URL or Path)

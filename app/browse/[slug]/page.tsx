@@ -3,9 +3,10 @@ import { prisma } from "@/lib/prisma";
 import Image from "next/image";
 import Link from "next/link";
 import DeleteButton from "@/components/DeleteButton";
+import { auth } from "@clerk/nextjs/server"; // Import Auth
 
-// --- CRITICAL FIX: Keep this line to prevent Build Errors ---
-export const dynamic = "force-dynamic"; 
+// --- CRITICAL FIX: Forces Next.js to fetch fresh data on every visit ---
+export const dynamic = "force-dynamic";
 
 export default async function BrowseSubCategoryPage({ 
   params 
@@ -14,6 +15,10 @@ export default async function BrowseSubCategoryPage({
 }) {
   const { slug } = await params;
 
+  // 1. Get Current User (for ownership check)
+  const { userId } = await auth();
+
+  // 2. Fetch Products from DB
   const products = await prisma.product.findMany({
     where: {
       subCategory: {
@@ -24,6 +29,7 @@ export default async function BrowseSubCategoryPage({
     orderBy: { createdAt: 'desc' }
   });
 
+  // 3. Group Products by "Sub-Sub-Category"
   const groupedProducts: Record<string, typeof products> = {};
   
   products.forEach(product => {
@@ -34,6 +40,7 @@ export default async function BrowseSubCategoryPage({
 
   return (
     <div className="min-h-screen bg-gray-50 p-8">
+      {/* Header */}
       <div className="max-w-7xl mx-auto mb-8">
         <Link href="/" className="text-sm text-gray-500 hover:text-[#00529b]">← Back to Home</Link>
         <h1 className="text-3xl font-bold text-[#00529b] capitalize mt-2">
@@ -58,7 +65,12 @@ export default async function BrowseSubCategoryPage({
               <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-6">
                 {items.map((product) => (
                   <div key={product.id} className="bg-white rounded-xl shadow-sm border border-gray-100 p-3 hover:shadow-md transition-all relative group">
-                    <DeleteButton productId={product.id} productName={product.name} />
+                    
+                    {/* Delete Button: Only show if user owns the product */}
+                    {userId === product.vendorId && (
+                      <DeleteButton productId={product.id} productName={product.name} />
+                    )}
+
                     <Link href={`/product/${product.slug}`} className="block">
                       <div className="relative aspect-square mb-3 bg-gray-50 rounded-lg overflow-hidden">
                         <Image 
@@ -69,9 +81,11 @@ export default async function BrowseSubCategoryPage({
                           unoptimized
                         />
                       </div>
+                      
                       <h3 className="font-semibold text-gray-800 text-sm line-clamp-2 leading-tight min-h-[2.5em]">
                         {product.title || product.name}
                       </h3>
+                      
                       <div className="mt-2 flex items-center justify-between">
                         <span className="text-[#00529b] font-bold text-sm">₹{product.price}</span>
                         <span className="text-xs text-gray-500 bg-gray-100 px-1.5 py-0.5 rounded">

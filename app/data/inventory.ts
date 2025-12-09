@@ -105,6 +105,62 @@ export const INVENTORY_DATA: Category[] = [
     ],
   },
   {
+    title: "Abrading & Polishing",
+    slug: toSlug("Abrading & Polishing"),
+    items: [
+      {
+        name: "Abrasive Belts", imagePath: "/abrasive\\belt.jpg",
+        quantity: undefined
+      }, // Example: Real image path
+      {
+        name: "Abrasive Discs", imagePath: "/abrasive\\discs.jpg",
+        quantity: undefined
+      },
+      {
+        name: "Abrasive Wheels", imagePath: "/abrasive\\abrasive-wheels.jpg",
+        quantity: undefined
+      },
+      {
+        name: "Buffing Wheels", imagePath: "/abrasive\\buffing-wheels.jpg",
+        quantity: undefined
+      },
+      {
+        name: "Deburring Tools", imagePath: "/abrasive\\deburring-tools.jpg",
+        quantity: undefined
+      },
+      {
+        name: "Files", imagePath: "/abrasive\\files.jpg",
+        quantity: undefined
+      },
+      {
+        name: "Grinding Wheels", imagePath: "/abrasive\\grinding-wheels.jpg",
+        quantity: undefined
+      },
+      {
+        name: "Honing Tools", imagePath: "/abrasive\\honing-tools.jpg",
+        quantity: undefined
+      },
+      {
+        name: "Polishing Compounds",
+        imagePath: "/abrasive\\polishing-compound.webp",
+        quantity: undefined
+      },
+      {
+        name: "Sandpaper", imagePath: "/abrasive\\sandpaper.jpg",
+        quantity: undefined
+      },
+      {
+        name: "Sharpening Stones",
+        imagePath: "/abrasive\\sharpening-stones.webp",
+        quantity: undefined
+      },
+      {
+        name: "Wire Brushes", imagePath: "/abrasive\\wire-brushes.jpg",
+        quantity: undefined
+      },
+    ],
+  },
+  {
     title: "Power Tools",
     slug: toSlug("Power Tools"),
     items: [
@@ -253,117 +309,66 @@ export const INVENTORY_DATA: Category[] = [
       },
     ],
   },
-
-  {
-    title: "Abrading & Polishing",
-    slug: toSlug("Abrading & Polishing"),
+   {
+    title: "Hand Tools",
+    slug: toSlug("Hand Tools"),
     items: [
+      // Example
       {
-        name: "Abrasive Belts", imagePath: "/abrasive\\belt.jpg",
-        quantity: undefined
-      }, // Example: Real image path
-      {
-        name: "Abrasive Discs", imagePath: "/abrasive\\discs.jpg",
+        name: "Crimpers", imagePath: "/handtools/crimpers.jpg",
         quantity: undefined
       },
       {
-        name: "Abrasive Wheels", imagePath: "/abrasive\\abrasive-wheels.jpg",
+        name: "Files", imagePath: "/handtools/files.avif",
         quantity: undefined
       },
       {
-        name: "Buffing Wheels", imagePath: "/abrasive\\buffing-wheels.jpg",
+        name: "Hammers", imagePath: "/handtools/hammer.webp",
+        quantity: undefined
+      }, // Example
+      {
+        name: "Knives", imagePath: "/handtools/knives.jpg",
         quantity: undefined
       },
       {
-        name: "Deburring Tools", imagePath: "/abrasive\\deburring-tools.jpg",
+        name: "Multi-Tools", imagePath: "/handtools/multitools.jpg",
         quantity: undefined
       },
       {
-        name: "Files", imagePath: "/abrasive\\files.jpg",
+        name: "Pliers", imagePath: "/handtools/pliers.webp",
         quantity: undefined
       },
       {
-        name: "Grinding Wheels", imagePath: "/abrasive\\grinding-wheels.jpg",
+        name: "Pry Bars", imagePath: "/handtools/pry-bars.jpg",
         quantity: undefined
       },
       {
-        name: "Honing Tools", imagePath: "/abrasive\\honing-tools.jpg",
+        name: "Ratchets", imagePath: "/handtools/ratches.jpg",
         quantity: undefined
       },
       {
-        name: "Polishing Compounds",
-        imagePath: "/abrasive\\polishing-compound.webp",
+        name: "Saws", imagePath: "/handtools/saw.webp",
         quantity: undefined
       },
       {
-        name: "Sandpaper", imagePath: "/abrasive\\sandpaper.jpg",
+        name: "Screwdrivers", imagePath: "/handtools/screwdriver.webp",
+        quantity: undefined
+      }, // Example
+      {
+        name: "Sockets", imagePath: "/handtools/sockets.jpg",
         quantity: undefined
       },
       {
-        name: "Sharpening Stones",
-        imagePath: "/abrasive\\sharpening-stones.webp",
+        name: "Staplers", imagePath: "/handtools/staplers.jpg",
         quantity: undefined
       },
       {
-        name: "Wire Brushes", imagePath: "/abrasive\\wire-brushes.jpg",
+        name: "Wrenches", imagePath: "/handtools/wrenches.avif",
         quantity: undefined
       },
     ],
   },
-  {
-    title: "Building & Grounds",
-    slug: toSlug("Building & Grounds"),
-    items: [
-      {
-        name: "Acoustic Tiles",
-        imagePath: "/building&grounds\\acoustic-tiles.jpg",
-        quantity: undefined
-      },
-      {
-        name: "Awnings", imagePath: "/building&grounds\\Awnings.webp",
-        quantity: undefined
-      },
-      {
-        name: "Barriers & Railings",
-        imagePath: "/building&grounds\\barriers-railings.jpg",
-        quantity: undefined
-      },
-      {
-        name: "Doors", imagePath: "/building&grounds\\doors.webp",
-        quantity: undefined
-      },
-      {
-        name: "Drainage", imagePath: "/building&grounds\\drainage.avif",
-        quantity: undefined
-      },
-      {
-        name: "Flooring", imagePath: "/building&grounds\\flooring.webp",
-        quantity: undefined
-      },
-      {
-        name: "Grounds Maintenance",
-        imagePath: "/building&grounds\\ground-maintainance.jpg",
-        quantity: undefined
-      },
-      {
-        name: "Ladders", imagePath: "/building&grounds\\ladders.jpg",
-        quantity: undefined
-      },
-      {
-        name: "Matting", imagePath: "/building&grounds\\matting.jpg",
-        quantity: undefined
-      },
-      {
-        name: "Stairs", imagePath: "/building&grounds\\stairs.jpg",
-        quantity: undefined
-      },
-      {
-        name: "Windows", imagePath: "/building&grounds\\windows.webp",
-        quantity: undefined
-      },
-    ],
-  },
-  {
+   {
     title: "Electrical & Lighting",
     slug: toSlug("Electrical & Lighting"),
     items: [
@@ -421,6 +426,591 @@ export const INVENTORY_DATA: Category[] = [
       },
     ],
   },
+   {
+    title: "Office Supplies & Signs",
+    slug: toSlug("Office Supplies & Signs"),
+    items: [
+      {
+        name: "Boards & Easels", imagePath: "/office-supplies/boards.webp",
+        quantity: undefined
+      },
+      {
+        name: "Cleaning Supplies",
+        imagePath: "/office-supplies/cleaning-supplies.jpg",
+        quantity: undefined
+      },
+      {
+        name: "Envelopes", imagePath: "/office-supplies/envelopes.jpg",
+        quantity: undefined
+      },
+      {
+        name: "Labels", imagePath: "/office-supplies/labels.jpg",
+        quantity: undefined
+      },
+      {
+        name: "Office Furniture",
+        imagePath: "/office-supplies/office-furniture.webp",
+        quantity: undefined
+      },
+      {
+        name: "Paper", imagePath: "/office-supplies/paper.jpg",
+        quantity: undefined
+      },
+      {
+        name: "Pens & Pencils",
+        imagePath: "/office-supplies/pens-pencils.jpg",
+        quantity: undefined
+      },
+      {
+        name: "Tags", imagePath: "/office-supplies/tags.jpg",
+        quantity: undefined
+      },
+    ],
+  },
+
+  {
+    title: "Building & Grounds",
+    slug: toSlug("Building & Grounds"),
+    items: [
+      {
+        name: "Acoustic Tiles",
+        imagePath: "/building&grounds\\acoustic-tiles.jpg",
+        quantity: undefined
+      },
+      {
+        name: "Awnings", imagePath: "/building&grounds\\Awnings.webp",
+        quantity: undefined
+      },
+      {
+        name: "Barriers & Railings",
+        imagePath: "/building&grounds\\barriers-railings.jpg",
+        quantity: undefined
+      },
+      {
+        name: "Doors", imagePath: "/building&grounds\\doors.webp",
+        quantity: undefined
+      },
+      {
+        name: "Drainage", imagePath: "/building&grounds\\drainage.avif",
+        quantity: undefined
+      },
+      {
+        name: "Flooring", imagePath: "/building&grounds\\flooring.webp",
+        quantity: undefined
+      },
+      {
+        name: "Grounds Maintenance",
+        imagePath: "/building&grounds\\ground-maintainance.jpg",
+        quantity: undefined
+      },
+      {
+        name: "Ladders", imagePath: "/building&grounds\\ladders.jpg",
+        quantity: undefined
+      },
+      {
+        name: "Matting", imagePath: "/building&grounds\\matting.jpg",
+        quantity: undefined
+      },
+      {
+        name: "Stairs", imagePath: "/building&grounds\\stairs.jpg",
+        quantity: undefined
+      },
+      {
+        name: "Windows", imagePath: "/building&grounds\\windows.webp",
+        quantity: undefined
+      },
+    ],
+  },
+   {
+    title: "Sawing & Cutting",
+    slug: toSlug("Sawing & Cutting"),
+    items: [
+      {
+        name: "Bandsaw Blades",
+        imagePath: "/sawing-cutting/bandsaw-blades.jpg",
+        quantity: undefined
+      },
+      {
+        name: "Circular Saw Blades",
+        imagePath: "/sawing-cutting/circular-saw-blades.webp",
+        quantity: undefined
+      },
+      {
+        name: "Cut-Off Wheels",
+        imagePath: "/sawing-cutting/cut-off-wheels.jpg",
+        quantity: undefined
+      },
+      {
+        name: "Dies", imagePath: "/sawing-cutting/dies.jpg",
+        quantity: undefined
+      },
+      {
+        name: "Drill Bits", imagePath: "/sawing-cutting/drill-bits.jpg",
+        quantity: undefined
+      },
+      {
+        name: "End Mills", imagePath: "/sawing-cutting/end-mills.png",
+        quantity: undefined
+      },
+      {
+        name: "Hole Saws", imagePath: "/sawing-cutting/hole-saws.jpg",
+        quantity: undefined
+      },
+      {
+        name: "Jigsaw Blades", imagePath: "/sawing-cutting/jigsaw-blades.jpg",
+        quantity: undefined
+      },
+      {
+        name: "Knives", imagePath: "/sawing-cutting/knives.jpg",
+        quantity: undefined
+      },
+      {
+        name: "Reamers", imagePath: "/sawing-cutting/reamers.jpg",
+        quantity: undefined
+      },
+      {
+        name: "Reciprocating Saw Blades",
+        imagePath: "/sawing-cutting/reciprocating-saw-blades.jpg",
+        quantity: undefined
+      },
+      {
+        name: "Taps", imagePath: "/sawing-cutting/taps.avif",
+        quantity: undefined
+      },
+    ],
+  },
+   {
+    title: "Sealing",
+    slug: toSlug("Sealing"),
+    items: [
+      {
+        name: "Compression Packing",
+        imagePath: "/sealing/compression-packing.jpg",
+        quantity: undefined
+      },
+      {
+        name: "Gaskets", imagePath: "/sealing/gaskets.jpg",
+        quantity: undefined
+      },
+      {
+        name: "O-Rings", imagePath: "/sealing/o-rings.jpg",
+        quantity: undefined
+      },
+      {
+        name: "Sealants", imagePath: "/sealing/sealants.jpg",
+        quantity: undefined
+      },
+      {
+        name: "Thread Sealants", imagePath: "/sealing/thread-sealants.webp",
+        quantity: undefined
+      },
+      {
+        name: "Weatherstripping", imagePath: "/sealing/weatherstripping.jpg",
+        quantity: undefined
+      },
+    ],
+  },
+   {
+    title: "Welding",
+    slug: toSlug("Welding"),
+    items: [
+      {
+        name: "Air Carbon Arc", imagePath: "/welding/air-carbon-arc.webp",
+        quantity: undefined
+      },
+      {
+        name: "Arc Welding", imagePath: "/welding/arc-welding.webp",
+        quantity: undefined
+      },
+      {
+        name: "Filler Metals", imagePath: "/welding/filler-metals.webp",
+        quantity: undefined
+      },
+    {
+        name: "Gas Equipment", imagePath: "/welding/gas-equipment.avif",
+        quantity: undefined
+      },
+      {
+        name: "Plasma Cutting", imagePath: "/welding/plasma-cutter.jpg",
+        quantity: undefined
+      },
+      {
+        name: "Plastic Welding", imagePath: "/welding/plastic-welding.webp",
+        quantity: undefined
+      },
+      {
+        name: "Soldering", imagePath: "/welding/soldering.jpg",
+        quantity: undefined
+      },
+      {
+        name: "Spot Welding", imagePath: "/welding/spot-welding.jpg",
+        quantity: undefined
+      },
+      {
+        name: "Stud Welding", imagePath: "/welding/stud-welding.webp",
+        quantity: undefined
+      },
+      {
+        name: "Weld Cleaning", imagePath: "/welding/weld-cleaning.webp",
+        quantity: undefined
+      },
+      {
+        name: "Weld Fixturing", imagePath: "/welding/weld-fixture.jpg",
+        quantity: undefined
+      },
+      {
+        name: "Weld Testing", imagePath: "/welding/weld-testing.jpg",
+        quantity: undefined
+      },
+      {
+        name: "Area Protection", imagePath: "/welding/area-protection.webp",
+        quantity: undefined
+      },
+       {
+        name: "Fume Extraction", imagePath: "/welding/fume-extractor.jpg",
+        quantity: undefined
+      },
+      
+    ],  
+
+  },
+   {
+    title: "Shipping",
+    slug: toSlug("Shipping"),
+    items: [
+      {
+        name: "Bags", imagePath: "/shipping/bags.jpg",
+        quantity: undefined
+      },
+      {
+        name: "Boxes", imagePath: "/shipping/boxes.jpg",
+        quantity: undefined
+      },
+      {
+        name: "Bubble Wrap", imagePath: "/shipping/bubble-wrap.jpg",
+        quantity: undefined
+      },
+      {
+        name: "Packing Peanuts", imagePath: "/shipping/packing-peanuts.jpg",
+        quantity: undefined
+      },
+      {
+        name: "Pallets", imagePath: "/shipping/pallets.webp",
+        quantity: undefined
+      },
+      {
+        name: "Shrink Wrap", imagePath: "/shipping/shrink-wrap.jpg",
+        quantity: undefined
+      },
+      {
+        name: "Strapping", imagePath: "/shipping/strapping.jpg",
+        quantity: undefined
+      },
+      {
+        name: "Tape", imagePath: "/shipping/tape.jpg",
+        quantity: undefined
+      },
+    ],
+  },
+  {
+    title: "Safety Supplies",
+    slug: toSlug("Safety Supplies"),
+    items: [
+      {
+        name: "Clothing", imagePath: "/safety-supplies/clothing.jpg",
+        quantity: undefined
+      },
+      {
+        name: "Ear Protection",
+        imagePath: "/safety-supplies/ear-protection.jpg",
+        quantity: undefined
+      },
+      {
+        name: "Eye Protection",
+        imagePath: "/safety-supplies/eye-protection.jpg",
+        quantity: undefined
+      },
+      {
+        name: "Fall Protection",
+        imagePath: "/safety-supplies/fall-protection.jpg",
+        quantity: undefined
+      },
+      {
+        name: "Fire Extinguishers",
+        imagePath: "/safety-supplies/fire-extinguishers.jpg",
+        quantity: undefined
+      },
+      {
+        name: "First Aid", imagePath: "/safety-supplies/first-aid.jpg",
+        quantity: undefined
+      },
+      {
+        name: "Gloves", imagePath: "/safety-supplies/gloves.jpeg",
+        quantity: undefined
+      },
+      {
+        name: "Hard Hats", imagePath: "/safety-supplies/hard-hats.webp",
+        quantity: undefined
+      },
+      {
+        name: "Masks", imagePath: "/safety-supplies/masks.jpg",
+        quantity: undefined
+      },
+      {
+        name: "Respirators", imagePath: "/safety-supplies/respirators.avif",
+        quantity: undefined
+      },
+      {
+        name: "Safety Shoes", imagePath: "/safety-supplies/safety-shoes.jpg",
+        quantity: undefined
+      },
+      {
+        name: "Vests", imagePath: "/safety-supplies/vests.avif",
+        quantity: undefined
+      },
+    ],
+  },
+   {
+    title: "Measuring & Inspecting",
+    slug: toSlug("Measuring & Inspecting"),
+    items: [
+      {
+        name: "Calipers", imagePath: "/measuring/calipers.jpg",
+        quantity: undefined
+      },
+      {
+        name: "Gauges", imagePath: "/measuring/gauges.webp",
+        quantity: undefined
+      },
+      {
+        name: "Indicators", imagePath: "/measuring/indicators.jpg",
+        quantity: undefined
+      },
+      {
+        name: "Levels", imagePath: "/measuring/levels.webp",
+        quantity: undefined
+      },
+      {
+        name: "Magnifiers", imagePath: "/measuring/mabnifiers.jpg",
+        quantity: undefined
+      },
+      {
+        name: "Micrometers", imagePath: "/measuring/micrometers.webp",
+        quantity: undefined
+      },
+      {
+        name: "Microscopes", imagePath: "/measuring/microscopes.webp",
+        quantity: undefined
+      },
+      {
+        name: "Protractors", imagePath: "/measuring/protactors.webp",
+        quantity: undefined
+      },
+      {
+        name: "Rulers", imagePath: "/measuring/rulers.jpg",
+        quantity: undefined
+      },
+      {
+        name: "Scales", imagePath: "/measuring/scales.webp",
+        quantity: undefined
+      },
+      {
+        name: "Squares", imagePath: "/measuring/squares.jpg",
+        quantity: undefined
+      },
+      {
+        name: "Tape Measures", imagePath: "/measuring/tape-measure.jpg",
+        quantity: undefined
+      },
+      {
+        name: "Thermometers", imagePath: "/measuring/thermometers.webp",
+        quantity: undefined
+      },
+    ],
+  },
+   {
+    title: "Lubricating",
+    slug: toSlug("Lubricating"),
+    items: [
+      {
+        name: "Dispensing Equipment",
+        imagePath: "/lubricants/dispensive-equipment.jpg",
+        quantity: undefined
+      },
+      {
+        name: "Funnels", imagePath: "/lubricants/funnels.jpg",
+        quantity: undefined
+      },
+      {
+        name: "Grease", imagePath: "/lubricants/grease.jpg",
+        quantity: undefined
+      },
+      {
+        name: "Grease Guns", imagePath: "/lubricants/grease-guns.jpg",
+        quantity: undefined
+      },
+      {
+        name: "Lubricants", imagePath: "/lubricants/lubricants.jpg",
+        quantity: undefined
+      },
+      {
+        name: "Lubricators", imagePath: "/lubricants/lubricators.png",
+        quantity: undefined
+      },
+      {
+        name: "Oilers", imagePath: "/lubricants/oilers.jpg",
+        quantity: undefined
+      },
+      {
+        name: "Oils", imagePath: "/lubricants/oils.avif",
+        quantity: undefined
+      },
+    ],
+  },
+   {
+    title: "Heating & Cooling",
+    slug: toSlug("Heating & Cooling"),
+    items: [
+      {
+        name: "Air Conditioners", imagePath: "/heating&cooling/ac.avif",
+        quantity: undefined
+      },
+      {
+        name: "Chillers", imagePath: "/heating&cooling/chillers.jpg",
+        quantity: undefined
+      },
+      {
+        name: "Ducting", imagePath: "/heating&cooling/ducting.jpg",
+        quantity: undefined
+      },
+      {
+        name: "Fans", imagePath: "/heating&cooling/fans.webp",
+        quantity: undefined
+      },
+      {
+        name: "Heat Exchangers",
+        imagePath: "/heating&cooling/heat-exchangers.webp",
+        quantity: undefined
+      },
+      {
+        name: "Heaters", imagePath: "/heating&cooling/heaters.jpg",
+        quantity: undefined
+      },
+      {
+        name: "HVAC Controls", imagePath: "/heating&cooling/hvac.jpg",
+        quantity: undefined
+      },
+      {
+        name: "Thermostats", imagePath: "/heating&cooling/thermostat.webp",
+        quantity: undefined
+      },
+      {
+        name: "Vents", imagePath: "/heating&cooling/vents.jpg",
+        quantity: undefined
+      },
+    ],
+  },
+   {
+    title: "Furniture & Storage",
+    slug: toSlug("Furniture & Storage"),
+    items: [
+      {
+        name: "Bins & Totes", imagePath: "/furniture\\bins-totes.png",
+        quantity: undefined
+      },
+      {
+        name: "Cabinets", imagePath: "/furniture\\cabinets.webp",
+        quantity: undefined
+      },
+      {
+        name: "Carts", imagePath: "/furniture\\carts.jpg",
+        quantity: undefined
+      },
+      {
+        name: "Chairs & Stools", imagePath: "/furniture\\chairs.webp",
+        quantity: undefined
+      },
+      {
+        name: "Desks", imagePath: "/furniture\\desks.webp",
+        quantity: undefined
+      },
+      {
+        name: "Drawers", imagePath: "/furniture\\drawers.jpg",
+        quantity: undefined
+      },
+      {
+        name: "Lockers", imagePath: "/furniture\\lockers.webp",
+        quantity: undefined
+      },
+      {
+        name: "Racks", imagePath: "/furniture\\racks.jpg",
+        quantity: undefined
+      },
+      {
+        name: "Shelving", imagePath: "/furniture\\shelving.webp",
+        quantity: undefined
+      },
+      {
+        name: "Workbenches", imagePath: "/furniture\\workbenches.jpg",
+        quantity: undefined
+      },
+    ],
+  },
+
+   {
+    title: "Material Handling",
+    slug: toSlug("Material Handling"),
+    items: [
+      {
+        name: "Cranes", imagePath: "/material-handling/cranes.png",
+        quantity: undefined
+      },
+      {
+        name: "Dock Equipment",
+        imagePath: "/material-handling/dock-equipment.jpg",
+        quantity: undefined
+      },
+      {
+        name: "Dollies", imagePath: "/material-handling/dollies.webp",
+        quantity: undefined
+      },
+      {
+        name: "Drum Handling",
+        imagePath: "/material-handling/dum-handling.webp",
+        quantity: undefined
+      },
+      {
+        name: "Forklifts", imagePath: "/material-handling/forklifts.webp",
+        quantity: undefined
+      },
+      {
+        name: "Hoists", imagePath: "/material-handling/Hoists.webp",
+        quantity: undefined
+      },
+      {
+        name: "Jacks", imagePath: "/material-handling/jacks.webp",
+        quantity: undefined
+      },
+      {
+        name: "Lift Tables", imagePath: "/material-handling/lift-tables.png",
+        quantity: undefined
+      },
+      {
+        name: "Pallet Trucks",
+        imagePath: "/material-handling/pallet-trucks.webp",
+        quantity: undefined
+      },
+      {
+        name: "Slings", imagePath: "/material-handling/slings.jpg",
+        quantity: undefined
+      },
+      {
+        name: "Winches", imagePath: "/material-handling/winches.jpg",
+        quantity: undefined
+      },
+    ],
+  },
+  
   {
     title: "Fabricating",
     slug: toSlug("Fabricating"),
@@ -542,111 +1132,8 @@ export const INVENTORY_DATA: Category[] = [
       },
     ],
   },
-  {
-    title: "Furniture & Storage",
-    slug: toSlug("Furniture & Storage"),
-    items: [
-      {
-        name: "Bins & Totes", imagePath: "/furniture\\bins-totes.png",
-        quantity: undefined
-      },
-      {
-        name: "Cabinets", imagePath: "/furniture\\cabinets.webp",
-        quantity: undefined
-      },
-      {
-        name: "Carts", imagePath: "/furniture\\carts.jpg",
-        quantity: undefined
-      },
-      {
-        name: "Chairs & Stools", imagePath: "/furniture\\chairs.webp",
-        quantity: undefined
-      },
-      {
-        name: "Desks", imagePath: "/furniture\\desks.webp",
-        quantity: undefined
-      },
-      {
-        name: "Drawers", imagePath: "/furniture\\drawers.jpg",
-        quantity: undefined
-      },
-      {
-        name: "Lockers", imagePath: "/furniture\\lockers.webp",
-        quantity: undefined
-      },
-      {
-        name: "Racks", imagePath: "/furniture\\racks.jpg",
-        quantity: undefined
-      },
-      {
-        name: "Shelving", imagePath: "/furniture\\shelving.webp",
-        quantity: undefined
-      },
-      {
-        name: "Workbenches", imagePath: "/furniture\\workbenches.jpg",
-        quantity: undefined
-      },
-    ],
-  },
-  {
-    title: "Hand Tools",
-    slug: toSlug("Hand Tools"),
-    items: [
-      // Example
-      {
-        name: "Crimpers", imagePath: "/handtools/crimpers.jpg",
-        quantity: undefined
-      },
-      {
-        name: "Files", imagePath: "/handtools/files.avif",
-        quantity: undefined
-      },
-      {
-        name: "Hammers", imagePath: "/handtools/hammer.webp",
-        quantity: undefined
-      }, // Example
-      {
-        name: "Knives", imagePath: "/handtools/knives.jpg",
-        quantity: undefined
-      },
-      {
-        name: "Multi-Tools", imagePath: "/handtools/multitools.jpg",
-        quantity: undefined
-      },
-      {
-        name: "Pliers", imagePath: "/handtools/pliers.webp",
-        quantity: undefined
-      },
-      {
-        name: "Pry Bars", imagePath: "/handtools/pry-bars.jpg",
-        quantity: undefined
-      },
-      {
-        name: "Ratchets", imagePath: "/handtools/ratches.jpg",
-        quantity: undefined
-      },
-      {
-        name: "Saws", imagePath: "/handtools/saw.webp",
-        quantity: undefined
-      },
-      {
-        name: "Screwdrivers", imagePath: "/handtools/screwdriver.webp",
-        quantity: undefined
-      }, // Example
-      {
-        name: "Sockets", imagePath: "/handtools/sockets.jpg",
-        quantity: undefined
-      },
-      {
-        name: "Staplers", imagePath: "/handtools/staplers.jpg",
-        quantity: undefined
-      },
-      {
-        name: "Wrenches", imagePath: "/handtools/wrenches.avif",
-        quantity: undefined
-      },
-    ],
-  },
+ 
+ 
   {
     title: "Hardware",
     slug: toSlug("Hardware"),
@@ -697,240 +1184,11 @@ export const INVENTORY_DATA: Category[] = [
       },
     ],
   },
-  {
-    title: "Heating & Cooling",
-    slug: toSlug("Heating & Cooling"),
-    items: [
-      {
-        name: "Air Conditioners", imagePath: "/heating&cooling/ac.avif",
-        quantity: undefined
-      },
-      {
-        name: "Chillers", imagePath: "/heating&cooling/chillers.jpg",
-        quantity: undefined
-      },
-      {
-        name: "Ducting", imagePath: "/heating&cooling/ducting.jpg",
-        quantity: undefined
-      },
-      {
-        name: "Fans", imagePath: "/heating&cooling/fans.webp",
-        quantity: undefined
-      },
-      {
-        name: "Heat Exchangers",
-        imagePath: "/heating&cooling/heat-exchangers.webp",
-        quantity: undefined
-      },
-      {
-        name: "Heaters", imagePath: "/heating&cooling/heaters.jpg",
-        quantity: undefined
-      },
-      {
-        name: "HVAC Controls", imagePath: "/heating&cooling/hvac.jpg",
-        quantity: undefined
-      },
-      {
-        name: "Thermostats", imagePath: "/heating&cooling/thermostat.webp",
-        quantity: undefined
-      },
-      {
-        name: "Vents", imagePath: "/heating&cooling/vents.jpg",
-        quantity: undefined
-      },
-    ],
-  },
-  {
-    title: "Lubricating",
-    slug: toSlug("Lubricating"),
-    items: [
-      {
-        name: "Dispensing Equipment",
-        imagePath: "/lubricants/dispensive-equipment.jpg",
-        quantity: undefined
-      },
-      {
-        name: "Funnels", imagePath: "/lubricants/funnels.jpg",
-        quantity: undefined
-      },
-      {
-        name: "Grease", imagePath: "/lubricants/grease.jpg",
-        quantity: undefined
-      },
-      {
-        name: "Grease Guns", imagePath: "/lubricants/grease-guns.jpg",
-        quantity: undefined
-      },
-      {
-        name: "Lubricants", imagePath: "/lubricants/lubricants.jpg",
-        quantity: undefined
-      },
-      {
-        name: "Lubricators", imagePath: "/lubricants/lubricators.png",
-        quantity: undefined
-      },
-      {
-        name: "Oilers", imagePath: "/lubricants/oilers.jpg",
-        quantity: undefined
-      },
-      {
-        name: "Oils", imagePath: "/lubricants/oils.avif",
-        quantity: undefined
-      },
-    ],
-  },
-  {
-    title: "Material Handling",
-    slug: toSlug("Material Handling"),
-    items: [
-      {
-        name: "Cranes", imagePath: "/material-handling/cranes.png",
-        quantity: undefined
-      },
-      {
-        name: "Dock Equipment",
-        imagePath: "/material-handling/dock-equipment.jpg",
-        quantity: undefined
-      },
-      {
-        name: "Dollies", imagePath: "/material-handling/dollies.webp",
-        quantity: undefined
-      },
-      {
-        name: "Drum Handling",
-        imagePath: "/material-handling/dum-handling.webp",
-        quantity: undefined
-      },
-      {
-        name: "Forklifts", imagePath: "/material-handling/forklifts.webp",
-        quantity: undefined
-      },
-      {
-        name: "Hoists", imagePath: "/material-handling/Hoists.webp",
-        quantity: undefined
-      },
-      {
-        name: "Jacks", imagePath: "/material-handling/jacks.webp",
-        quantity: undefined
-      },
-      {
-        name: "Lift Tables", imagePath: "/material-handling/lift-tables.png",
-        quantity: undefined
-      },
-      {
-        name: "Pallet Trucks",
-        imagePath: "/material-handling/pallet-trucks.webp",
-        quantity: undefined
-      },
-      {
-        name: "Slings", imagePath: "/material-handling/slings.jpg",
-        quantity: undefined
-      },
-      {
-        name: "Winches", imagePath: "/material-handling/winches.jpg",
-        quantity: undefined
-      },
-    ],
-  },
-  {
-    title: "Measuring & Inspecting",
-    slug: toSlug("Measuring & Inspecting"),
-    items: [
-      {
-        name: "Calipers", imagePath: "/measuring/calipers.jpg",
-        quantity: undefined
-      },
-      {
-        name: "Gauges", imagePath: "/measuring/gauges.webp",
-        quantity: undefined
-      },
-      {
-        name: "Indicators", imagePath: "/measuring/indicators.jpg",
-        quantity: undefined
-      },
-      {
-        name: "Levels", imagePath: "/measuring/levels.webp",
-        quantity: undefined
-      },
-      {
-        name: "Magnifiers", imagePath: "/measuring/mabnifiers.jpg",
-        quantity: undefined
-      },
-      {
-        name: "Micrometers", imagePath: "/measuring/micrometers.webp",
-        quantity: undefined
-      },
-      {
-        name: "Microscopes", imagePath: "/measuring/microscopes.webp",
-        quantity: undefined
-      },
-      {
-        name: "Protractors", imagePath: "/measuring/protactors.webp",
-        quantity: undefined
-      },
-      {
-        name: "Rulers", imagePath: "/measuring/rulers.jpg",
-        quantity: undefined
-      },
-      {
-        name: "Scales", imagePath: "/measuring/scales.webp",
-        quantity: undefined
-      },
-      {
-        name: "Squares", imagePath: "/measuring/squares.jpg",
-        quantity: undefined
-      },
-      {
-        name: "Tape Measures", imagePath: "/measuring/tape-measure.jpg",
-        quantity: undefined
-      },
-      {
-        name: "Thermometers", imagePath: "/measuring/thermometers.webp",
-        quantity: undefined
-      },
-    ],
-  },
-  {
-    title: "Office Supplies & Signs",
-    slug: toSlug("Office Supplies & Signs"),
-    items: [
-      {
-        name: "Boards & Easels", imagePath: "/office-supplies/boards.webp",
-        quantity: undefined
-      },
-      {
-        name: "Cleaning Supplies",
-        imagePath: "/office-supplies/cleaning-supplies.jpg",
-        quantity: undefined
-      },
-      {
-        name: "Envelopes", imagePath: "/office-supplies/envelopes.jpg",
-        quantity: undefined
-      },
-      {
-        name: "Labels", imagePath: "/office-supplies/labels.jpg",
-        quantity: undefined
-      },
-      {
-        name: "Office Furniture",
-        imagePath: "/office-supplies/office-furniture.webp",
-        quantity: undefined
-      },
-      {
-        name: "Paper", imagePath: "/office-supplies/paper.jpg",
-        quantity: undefined
-      },
-      {
-        name: "Pens & Pencils",
-        imagePath: "/office-supplies/pens-pencils.jpg",
-        quantity: undefined
-      },
-      {
-        name: "Tags", imagePath: "/office-supplies/tags.jpg",
-        quantity: undefined
-      },
-    ],
-  },
+ 
+ 
+ 
+ 
+ 
   {
     title: "Pipe, Tubing, Hose & Fittings",
     slug: toSlug("Pipe, Tubing, Hose & Fittings"),
@@ -1238,255 +1496,11 @@ export const INVENTORY_DATA: Category[] = [
       },
     ],
   },
-  {
-    title: "Safety Supplies",
-    slug: toSlug("Safety Supplies"),
-    items: [
-      {
-        name: "Clothing", imagePath: "/safety-supplies/clothing.jpg",
-        quantity: undefined
-      },
-      {
-        name: "Ear Protection",
-        imagePath: "/safety-supplies/ear-protection.jpg",
-        quantity: undefined
-      },
-      {
-        name: "Eye Protection",
-        imagePath: "/safety-supplies/eye-protection.jpg",
-        quantity: undefined
-      },
-      {
-        name: "Fall Protection",
-        imagePath: "/safety-supplies/fall-protection.jpg",
-        quantity: undefined
-      },
-      {
-        name: "Fire Extinguishers",
-        imagePath: "/safety-supplies/fire-extinguishers.jpg",
-        quantity: undefined
-      },
-      {
-        name: "First Aid", imagePath: "/safety-supplies/first-aid.jpg",
-        quantity: undefined
-      },
-      {
-        name: "Gloves", imagePath: "/safety-supplies/gloves.jpeg",
-        quantity: undefined
-      },
-      {
-        name: "Hard Hats", imagePath: "/safety-supplies/hard-hats.webp",
-        quantity: undefined
-      },
-      {
-        name: "Masks", imagePath: "/safety-supplies/masks.jpg",
-        quantity: undefined
-      },
-      {
-        name: "Respirators", imagePath: "/safety-supplies/respirators.avif",
-        quantity: undefined
-      },
-      {
-        name: "Safety Shoes", imagePath: "/safety-supplies/safety-shoes.jpg",
-        quantity: undefined
-      },
-      {
-        name: "Vests", imagePath: "/safety-supplies/vests.avif",
-        quantity: undefined
-      },
-    ],
-  },
-  {
-    title: "Sawing & Cutting",
-    slug: toSlug("Sawing & Cutting"),
-    items: [
-      {
-        name: "Bandsaw Blades",
-        imagePath: "/sawing-cutting/bandsaw-blades.jpg",
-        quantity: undefined
-      },
-      {
-        name: "Circular Saw Blades",
-        imagePath: "/sawing-cutting/circular-saw-blades.webp",
-        quantity: undefined
-      },
-      {
-        name: "Cut-Off Wheels",
-        imagePath: "/sawing-cutting/cut-off-wheels.jpg",
-        quantity: undefined
-      },
-      {
-        name: "Dies", imagePath: "/sawing-cutting/dies.jpg",
-        quantity: undefined
-      },
-      {
-        name: "Drill Bits", imagePath: "/sawing-cutting/drill-bits.jpg",
-        quantity: undefined
-      },
-      {
-        name: "End Mills", imagePath: "/sawing-cutting/end-mills.png",
-        quantity: undefined
-      },
-      {
-        name: "Hole Saws", imagePath: "/sawing-cutting/hole-saws.jpg",
-        quantity: undefined
-      },
-      {
-        name: "Jigsaw Blades", imagePath: "/sawing-cutting/jigsaw-blades.jpg",
-        quantity: undefined
-      },
-      {
-        name: "Knives", imagePath: "/sawing-cutting/knives.jpg",
-        quantity: undefined
-      },
-      {
-        name: "Reamers", imagePath: "/sawing-cutting/reamers.jpg",
-        quantity: undefined
-      },
-      {
-        name: "Reciprocating Saw Blades",
-        imagePath: "/sawing-cutting/reciprocating-saw-blades.jpg",
-        quantity: undefined
-      },
-      {
-        name: "Taps", imagePath: "/sawing-cutting/taps.avif",
-        quantity: undefined
-      },
-    ],
-  },
-  {
-    title: "Sealing",
-    slug: toSlug("Sealing"),
-    items: [
-      {
-        name: "Compression Packing",
-        imagePath: "/sealing/compression-packing.jpg",
-        quantity: undefined
-      },
-      {
-        name: "Gaskets", imagePath: "/sealing/gaskets.jpg",
-        quantity: undefined
-      },
-      {
-        name: "O-Rings", imagePath: "/sealing/o-rings.jpg",
-        quantity: undefined
-      },
-      {
-        name: "Sealants", imagePath: "/sealing/sealants.jpg",
-        quantity: undefined
-      },
-      {
-        name: "Thread Sealants", imagePath: "/sealing/thread-sealants.webp",
-        quantity: undefined
-      },
-      {
-        name: "Weatherstripping", imagePath: "/sealing/weatherstripping.jpg",
-        quantity: undefined
-      },
-    ],
-  },
-  {
-    title: "Shipping",
-    slug: toSlug("Shipping"),
-    items: [
-      {
-        name: "Bags", imagePath: "/shipping/bags.jpg",
-        quantity: undefined
-      },
-      {
-        name: "Boxes", imagePath: "/shipping/boxes.jpg",
-        quantity: undefined
-      },
-      {
-        name: "Bubble Wrap", imagePath: "/shipping/bubble-wrap.jpg",
-        quantity: undefined
-      },
-      {
-        name: "Packing Peanuts", imagePath: "/shipping/packing-peanuts.jpg",
-        quantity: undefined
-      },
-      {
-        name: "Pallets", imagePath: "/shipping/pallets.webp",
-        quantity: undefined
-      },
-      {
-        name: "Shrink Wrap", imagePath: "/shipping/shrink-wrap.jpg",
-        quantity: undefined
-      },
-      {
-        name: "Strapping", imagePath: "/shipping/strapping.jpg",
-        quantity: undefined
-      },
-      {
-        name: "Tape", imagePath: "/shipping/tape.jpg",
-        quantity: undefined
-      },
-    ],
-  },
-  {
-    title: "Welding",
-    slug: toSlug("Welding"),
-    items: [
-      {
-        name: "Air Carbon Arc", imagePath: "/welding/air-carbon-arc.webp",
-        quantity: undefined
-      },
-      {
-        name: "Arc Welding", imagePath: "/welding/arc-welding.webp",
-        quantity: undefined
-      },
-      {
-        name: "Filler Metals", imagePath: "/welding/filler-metals.webp",
-        quantity: undefined
-      },
-    {
-        name: "Gas Equipment", imagePath: "/welding/gas-equipment.avif",
-        quantity: undefined
-      },
-      {
-        name: "Plasma Cutting", imagePath: "/welding/plasma-cutter.jpg",
-        quantity: undefined
-      },
-      {
-        name: "Plastic Welding", imagePath: "/welding/plastic-welding.webp",
-        quantity: undefined
-      },
-      {
-        name: "Soldering", imagePath: "/welding/soldering.jpg",
-        quantity: undefined
-      },
-      {
-        name: "Spot Welding", imagePath: "/welding/spot-welding.jpg",
-        quantity: undefined
-      },
-      {
-        name: "Stud Welding", imagePath: "/welding/stud-welding.webp",
-        quantity: undefined
-      },
-      {
-        name: "Weld Cleaning", imagePath: "/welding/weld-cleaning.webp",
-        quantity: undefined
-      },
-      {
-        name: "Weld Fixturing", imagePath: "/welding/weld-fixture.jpg",
-        quantity: undefined
-      },
-      {
-        name: "Weld Testing", imagePath: "/welding/weld-testing.jpg",
-        quantity: undefined
-      },
-      {
-        name: "Area Protection", imagePath: "/welding/area-protection.webp",
-        quantity: undefined
-      },
-       {
-        name: "Fume Extraction", imagePath: "/welding/fume-extractor.jpg",
-        quantity: undefined
-      },
-      
-    ],  
-
-  },
+  
+ 
+ 
+ 
+ 
 ];
 
 // Helper to get simple list of names for the Sidebar

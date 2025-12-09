@@ -1,7 +1,8 @@
 "use client";
 
 import React, { useState, useEffect, useCallback, useMemo } from "react";
-import { useSearchParams } from "next/navigation";
+import { useSearchParams, useRouter } from "next/navigation";
+import { useAuth, UserButton } from "@clerk/nextjs";
 import Image from "next/image";
 import Link from "next/link";
 import VendorModal from "@/components/VendorModal"; 
@@ -27,6 +28,8 @@ const XIcon = () => (
 
 // --- MAIN COMPONENT ---
 export default function InventoryContent() {
+  const { isSignedIn } = useAuth();
+  const router = useRouter();
   const searchParams = useSearchParams();
   const searchQuery = searchParams.get("q")?.toLowerCase() || "";
 
@@ -35,7 +38,16 @@ export default function InventoryContent() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isVendorModalOpen, setIsVendorModalOpen] = useState(false);
 
-  // 2. FILTERING STATIC DATA
+  // 2. CLICK HANDLER (PROTECTED)
+  const handlePostClick = () => {
+    if (isSignedIn) {
+      setIsVendorModalOpen(true);
+    } else {
+      router.push("/sign-in");
+    }
+  };
+
+  // 3. FILTERING STATIC DATA
   const filteredData = useMemo(() => {
     if (!searchQuery) return INVENTORY_DATA;
     return INVENTORY_DATA.map((category) => {
@@ -46,7 +58,7 @@ export default function InventoryContent() {
     }).filter((category) => category.items.length > 0);
   }, [searchQuery]);
 
-  // 3. SCROLL SPY
+  // 4. SCROLL SPY
   useEffect(() => {
     const sections = document.querySelectorAll("section");
     const observer = new IntersectionObserver(
@@ -63,7 +75,7 @@ export default function InventoryContent() {
     return () => observer.disconnect();
   }, [filteredData]);
 
-  // 4. SMOOTH SCROLL HANDLER
+  // 5. SMOOTH SCROLL HANDLER
   const handleScroll = useCallback(
     (e: React.MouseEvent, id: string, closeMenu?: boolean) => {
       e.preventDefault();
@@ -81,7 +93,6 @@ export default function InventoryContent() {
     []
   );
 
-  // Lock body scroll when mobile menu is open
   useEffect(() => {
     document.body.style.overflow = isMobileMenuOpen ? "hidden" : "unset";
     return () => { document.body.style.overflow = "unset"; };
@@ -90,6 +101,11 @@ export default function InventoryContent() {
   return (
     <div className="w-full flex flex-col md:flex-row relative min-h-screen">
       
+      {/* --- USER PROFILE BUTTON --- */}
+      <div className="fixed top-4 right-4 z-[60]">
+        <UserButton afterSignOutUrl="/" />
+      </div>
+
       {/* --- VENDOR MODAL --- */}
       <VendorModal 
         isOpen={isVendorModalOpen} 
@@ -98,10 +114,12 @@ export default function InventoryContent() {
 
       {/* --- FLOATING VENDOR BUTTON --- */}
       <button
-        onClick={() => setIsVendorModalOpen(true)}
-        className="fixed bottom-6 right-6 z-50 bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-6 rounded-full shadow-2xl transition-transform hover:scale-105 flex items-center gap-2 border-2 border-white/20 backdrop-blur-sm"
+        onClick={handlePostClick}
+        className={`fixed bottom-6 right-6 z-50 text-white font-bold py-3 px-6 rounded-full shadow-2xl transition-transform hover:scale-105 flex items-center gap-2 border-2 border-white/20 backdrop-blur-sm ${
+          isSignedIn ? "bg-green-600 hover:bg-green-700" : "bg-[#00529b] hover:bg-blue-800"
+        }`}
       >
-        <span>+ Post Item</span>
+        <span>{isSignedIn ? "+ Post Item" : "Login to Post"}</span>
       </button>
 
       {/* --- MOBILE MENU TRIGGER --- */}
@@ -218,6 +236,7 @@ export default function InventoryContent() {
                 <Link
                   // FIX 1: Add item.name to the key to force re-render when data changes
                   key={`${category.slug}-${item.name}-${idx}`}
+                  // IMPORTANT: Redirect to BROWSE page now, not Product page
                   href={`/browse/${toSlug(item.name)}`} 
                 >
                   <ProductCard item={item} />
