@@ -2,31 +2,30 @@
 
 import React, { useState, useEffect, useCallback, useMemo } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
-import { useAuth, UserButton } from "@clerk/nextjs";
+import { useAuth } from "@clerk/nextjs";
 import Image from "next/image";
 import Link from "next/link";
 import VendorModal from "@/components/VendorModal"; 
 import { INVENTORY_DATA, SIDEBAR_LINKS } from "@/app/data/inventory"; 
 
 // --- CONFIGURATION ---
-const BRAND_BLUE = "#00529b";
-const STICKY_HEADER_TOP = "115px";
-const HEADER_HEIGHT_OFFSET = 160;
+const STICKY_HEADER_TOP = "140px";
+const HEADER_HEIGHT_OFFSET = 180;
 
 // --- UTILS ---
 const toSlug = (text: string) =>
   text.toLowerCase().replace(/ /g, "-").replace(/[^\w-]+/g, "");
 
 // --- ICONS ---
+// Updated Menu Icon to be white/bold for better visibility on blue header
 const MenuIcon = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="4" x2="20" y1="12" y2="12" /><line x1="4" x2="20" y1="6" y2="6" /><line x1="4" x2="20" y1="18" y2="18" /></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="4" x2="20" y1="12" y2="12" /><line x1="4" x2="20" y1="6" y2="6" /><line x1="4" x2="20" y1="18" y2="18" /></svg>
 );
 
 const XIcon = () => (
   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 6 6 18" /><path d="m6 6 18 18" /></svg>
 );
 
-// --- MAIN COMPONENT ---
 export default function InventoryContent() {
   const { isSignedIn } = useAuth();
   const router = useRouter();
@@ -38,7 +37,7 @@ export default function InventoryContent() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isVendorModalOpen, setIsVendorModalOpen] = useState(false);
 
-  // 2. CLICK HANDLER (PROTECTED)
+  // 2. CLICK HANDLER
   const handlePostClick = () => {
     if (isSignedIn) {
       setIsVendorModalOpen(true);
@@ -101,50 +100,46 @@ export default function InventoryContent() {
   return (
     <div className="w-full flex flex-col md:flex-row relative min-h-screen">
       
-      {/* --- USER PROFILE BUTTON --- */}
-      <div className="fixed top-4 right-4 z-[60]">
-        <UserButton afterSignOutUrl="/" />
-      </div>
+      {/* REMOVED DUPLICATE USER BUTTON HERE (It's now in layout.tsx) */}
 
-      {/* --- VENDOR MODAL --- */}
       <VendorModal 
         isOpen={isVendorModalOpen} 
         onClose={() => setIsVendorModalOpen(false)} 
       />
 
-      {/* --- FLOATING VENDOR BUTTON --- */}
+      {/* --- POST ITEM BUTTON (Bottom Right) --- */}
       <button
         onClick={handlePostClick}
-        className={`fixed bottom-6 right-6 z-50 text-white font-bold py-3 px-6 rounded-full shadow-2xl transition-transform hover:scale-105 flex items-center gap-2 border-2 border-white/20 backdrop-blur-sm ${
+        className={`fixed bottom-6 right-6 z-[60] text-white font-bold py-3 px-6 rounded-full shadow-2xl transition-transform hover:scale-105 flex items-center gap-2 border-2 border-white/20 backdrop-blur-sm ${
           isSignedIn ? "bg-green-600 hover:bg-green-700" : "bg-[#00529b] hover:bg-blue-800"
         }`}
       >
         <span>{isSignedIn ? "+ Post Item" : "Login to Post"}</span>
       </button>
 
-      {/* --- MOBILE MENU TRIGGER --- */}
+      {/* --- HAMBURGER MENU (Top Left - Overlapping Header) --- */}
       <button
         onClick={() => setIsMobileMenuOpen(true)}
-        className="md:hidden fixed z-40 right-4 p-2 px-4 bg-[#00529b] text-white rounded-full shadow-lg hover:bg-blue-800 transition-all flex items-center gap-2 border-2 border-white/20 backdrop-blur-sm"
-        style={{ top: "120px" }}
+        className="md:hidden fixed top-3 left-4 z-[100] text-white p-1 hover:bg-white/10 rounded-md transition-colors"
+        aria-label="Open Categories"
       >
         <MenuIcon />
       </button>
 
       {/* --- MOBILE DRAWER --- */}
       <div
-        className={`md:hidden fixed inset-0 z-50 bg-black/50 backdrop-blur-sm transition-opacity duration-300 ${
+        className={`md:hidden fixed inset-0 z-[70] bg-black/50 backdrop-blur-sm transition-opacity duration-300 ${
           isMobileMenuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
         }`}
         onClick={() => setIsMobileMenuOpen(false)}
       />
       <div
-        className={`md:hidden fixed top-0 left-0 bottom-0 w-[280px] bg-white z-50 shadow-2xl transform transition-transform duration-300 ease-in-out flex flex-col ${
+        className={`md:hidden fixed top-0 left-0 bottom-0 w-[280px] bg-white z-[80] shadow-2xl transform transition-transform duration-300 ease-in-out flex flex-col ${
           isMobileMenuOpen ? "translate-x-0" : "-translate-x-full"
         }`}
       >
         <div className="p-4 border-b border-gray-200 flex items-center justify-between bg-gray-50">
-          <h2 className="text-lg font-bold text-[#00529b]">Categories</h2>
+          <h2 className="text-lg font-bold text-[#00529b]">Browse Categories</h2>
           <button onClick={() => setIsMobileMenuOpen(false)} className="p-2 bg-white rounded-full shadow-sm text-gray-500">
             <XIcon />
           </button>
@@ -153,11 +148,7 @@ export default function InventoryContent() {
           <ul className="space-y-1">
             {SIDEBAR_LINKS.map((linkName, index) => {
               const catSlug = INVENTORY_DATA.find((c) => c.title === linkName)?.slug || "";
-              const existsInView = filteredData.some((c: any) => c.slug === catSlug);
               const isActive = activeCategorySlug === catSlug;
-              
-              if (!existsInView && searchQuery) return null;
-
               return (
                 <li key={index}>
                   <a
@@ -177,18 +168,14 @@ export default function InventoryContent() {
       </div>
 
       {/* --- DESKTOP SIDEBAR --- */}
-      <aside className="hidden md:block w-64 shrink-0 py-6 pl-6 pr-4 border-r border-gray-200 sticky top-[70px] h-[calc(100vh-70px)] overflow-y-auto custom-scrollbar">
+      <aside className="hidden md:block w-64 shrink-0 py-6 pl-6 pr-4 border-r border-gray-200 sticky top-[130px] h-[calc(100vh-130px)] overflow-y-auto custom-scrollbar">
         <h2 className="text-xs uppercase tracking-wider font-bold text-gray-400 mb-4">
           Browse Categories
         </h2>
         <ul className="space-y-1 text-[13px] leading-tight text-gray-700">
           {SIDEBAR_LINKS.map((linkName, index) => {
             const catSlug = INVENTORY_DATA.find((c) => c.title === linkName)?.slug || "";
-            const existsInView = filteredData.some((c: any) => c.slug === catSlug);
             const isActive = activeCategorySlug === catSlug;
-
-            if (!existsInView && searchQuery) return null;
-
             return (
               <li key={index}>
                 <a
@@ -219,7 +206,7 @@ export default function InventoryContent() {
           <section
             key={category.slug}
             id={category.slug}
-            className="mb-10 scroll-mt-48 md:scroll-mt-24"
+            className="mb-10 scroll-mt-48 md:scroll-mt-40"
           >
             <div
               className="sticky z-20 bg-white/95 backdrop-blur-md border-b border-gray-200 py-3 mb-6 -mx-4 px-4 md:mx-0 md:px-0 md:static md:bg-transparent md:border-none"
@@ -234,9 +221,7 @@ export default function InventoryContent() {
             <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-x-4 gap-y-8">
               {category.items.map((item: any, idx: number) => (
                 <Link
-                  // FIX 1: Add item.name to the key to force re-render when data changes
                   key={`${category.slug}-${item.name}-${idx}`}
-                  // IMPORTANT: Redirect to BROWSE page now, not Product page
                   href={`/browse/${toSlug(item.name)}`} 
                 >
                   <ProductCard item={item} />
@@ -245,48 +230,23 @@ export default function InventoryContent() {
             </div>
           </section>
         ))}
-
-        {searchQuery && filteredData.length === 0 && (
-          <div className="flex flex-col items-center justify-center py-20 text-gray-400">
-            <span className="text-4xl mb-4">🔍</span>
-            <h2 className="text-lg font-semibold text-gray-600">No products found</h2>
-          </div>
-        )}
       </main>
     </div>
   );
 }
 
-// --- SUB-COMPONENT: PRODUCT CARD ---
-const ProductCard = React.memo(function ProductCard({
-  item,
-}: {
-  item: any; 
-}) {
+// ... (ProductCard Component remains the same) ...
+const ProductCard = React.memo(function ProductCard({ item }: { item: any }) {
   const encodedName = encodeURIComponent(item.name);
-  
-  // Logic to determine image source
   let primaryPath = item.imagePath ? item.imagePath.replace(/\\/g, "/") : "";
-  if (primaryPath && !primaryPath.startsWith("/") && !primaryPath.startsWith("http")) {
-    primaryPath = "/" + primaryPath;
-  }
+  if (primaryPath && !primaryPath.startsWith("/") && !primaryPath.startsWith("http")) primaryPath = "/" + primaryPath;
   const fallbackUrl = `https://placehold.co/400x400/f3f4f6/00529b.png?text=${encodedName}&font=roboto`;
-  
-  // FIX 2: Initialize state directly. No useEffect needed because the parent 'key' forces a fresh mount.
   const [imgSrc, setImgSrc] = useState(primaryPath || fallbackUrl);
 
   return (
     <div className="flex flex-col items-center group cursor-pointer w-full h-full bg-white rounded-lg p-2 transition-all hover:bg-white hover:shadow-lg relative">
       <div className="aspect-square w-full max-w-[120px] bg-white border border-gray-100 rounded-lg mb-3 flex items-center justify-center overflow-hidden relative shadow-sm">
-        <Image
-          src={imgSrc}
-          alt={item.name}
-          fill
-          sizes="(max-width: 768px) 100vw, 33vw"
-          className="object-contain p-2 group-hover:scale-105 transition-transform duration-300"
-          unoptimized={true}
-          onError={() => setImgSrc(fallbackUrl)} // This is still allowed
-        />
+        <Image src={imgSrc} alt={item.name} fill sizes="(max-width: 768px) 100vw, 33vw" className="object-contain p-2 group-hover:scale-105 transition-transform duration-300" unoptimized={true} onError={() => setImgSrc(fallbackUrl)} />
       </div>
       <span className="text-[13px] text-center leading-snug font-medium px-1 line-clamp-2 text-gray-600 group-hover:text-[#00529b]">
         {item.name}
