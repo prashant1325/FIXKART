@@ -108,14 +108,14 @@ export default function InventoryContent() {
       />
 
       {/* --- POST ITEM BUTTON (Bottom Right) --- */}
-      <button
+      {/* <button
         onClick={handlePostClick}
         className={`fixed bottom-6 right-6 z-[60] text-white font-bold py-3 px-6 rounded-full shadow-2xl transition-transform hover:scale-105 flex items-center gap-2 border-2 border-white/20 backdrop-blur-sm ${
           isSignedIn ? "bg-green-600 hover:bg-green-700" : "bg-[#00529b] hover:bg-blue-800"
         }`}
       >
         <span>{isSignedIn ? "+ Post Item" : "Login to Post"}</span>
-      </button>
+      </button> */}
 
       {/* --- HAMBURGER MENU (Top Left - Overlapping Header) --- */}
       <button
