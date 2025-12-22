@@ -67,13 +67,13 @@ export default function RootLayout({
                 <div className="flex items-center gap-4 text-sm font-semibold whitespace-nowrap ml-auto md:ml-0">
                   
                   {/* TRACK SALESMAN (Hidden on Mobile to save space) */}
-                  <div className="hidden lg:flex items-center gap-2 bg-white/10 px-3 py-1.5 rounded-full border border-white/20">
+                  {/* <div className="hidden lg:flex items-center gap-2 bg-white/10 px-3 py-1.5 rounded-full border border-white/20">
                     <Truck size={18} className="text-[#ffc20e]" />
                     <span className="text-white font-bold tracking-wide">Track Salesman</span>
                     <span className="bg-[#ffc20e] text-[#00529b] text-[9px] font-extrabold px-1.5 py-0.5 rounded shadow-sm">
                       SOON
                     </span>
-                  </div>
+                  </div> */}
 
                   {/* Auth Buttons */}
                   <div className="flex items-center gap-2">
