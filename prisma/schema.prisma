@@ -66,3 +66,52 @@ model Variant {
   product     Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
   productId   String   @db.ObjectId
 }
+
+// ... (Existing Product and Variant models)
+
+model VendorProfile {
+  id             String   @id @default(auto()) @map("_id") @db.ObjectId
+  userId         String   @unique // Links to Clerk User ID
+
+  status         String   @default("PENDING") // Options: PENDING, APPROVED, REJECTED
+
+  // --- BASIC INFO ---
+  fullName       String
+  companyName    String?
+  gstNumber      String?
+  phone          String
+  email          String
+  address        String
+  city           String
+  state          String
+  postalCode     String
+
+  // --- BUSINESS DETAILS ---
+  businessType       String // Retailer, OEM, etc.
+  yearsInBusiness    String?
+  // REMOVED: productsInterested
+
+  // --- KYC ---
+  idProofType    String // Aadhar, PAN, etc.
+  idProofNumber  String
+  idProofUrl     String // Cloudinary URL
+
+  // --- BANK DETAILS ---
+  bankName       String
+  accountHolder  String
+  accountNumber  String
+  ifscCode       String
+
+  // --- EXTRA ---
+  tradeLicense       String?
+  contactPerson      String?
+  alternateContact   String?
+  
+  // --- LOCATION PROOF ---
+  gpsLat             Float?
+  gpsLng             Float?
+  locationPhotoUrl   String // Cloudinary URL
+
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+}
